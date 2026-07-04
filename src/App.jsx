@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
 import CharacterList from "./components/CharacterList";
 import Stats from "./components/Stats";
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -29,6 +31,10 @@ function App() {
     getCharacters();
   }, []);
 
+  const filteredCharacters = characters.filter((character) =>
+    character.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
       <Header />
@@ -36,11 +42,19 @@ function App() {
       <main className="container">
         <Stats total={characters.length} />
 
+        <SearchBar search={search} setSearch={setSearch} />
+
         {loading && <p className="message">Cargando personajes...</p>}
 
         {error && <p className="error">{error}</p>}
 
-        {!loading && !error && <CharacterList characters={characters} />}
+        {!loading && !error && filteredCharacters.length === 0 && (
+          <p className="message">No se encontraron personajes.</p>
+        )}
+
+        {!loading && !error && filteredCharacters.length > 0 && (
+          <CharacterList characters={filteredCharacters} />
+        )}
       </main>
     </>
   );
