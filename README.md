@@ -1,16 +1,42 @@
-# React + Vite
+# Rick Favorites App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación desarrollada en React con Vite para el Taller Final API 2026 de Programación Front End.
 
-Currently, two official plugins are available:
+## Integrante
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Nicolás Meneses
 
-## React Compiler
+## Descripción
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+La aplicación consume la API pública de Rick and Morty y permite:
 
-## Expanding the ESLint configuration
+- Ver personajes con imagen.
+- Buscar personajes por nombre.
+- Agregar y quitar favoritos.
+- Mostrar favoritos en un panel lateral.
+- Bloquear y desbloquear personajes.
+- Ocultar personajes bloqueados del listado.
+- Eliminar automáticamente de favoritos a un personaje bloqueado.
+- Guardar favoritos y bloqueados en localStorage.
+- Ver estadísticas de total, favoritos y bloqueados.
+- Usar una interfaz responsiva para escritorio, tablet y móvil.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## API utilizada
+
+Rick and Morty API  
+https://rickandmortyapi.com/api/character
+
+## Tecnologías
+
+- React
+- Vite
+- JavaScript
+- CSS
+- localStorage
+- GitHub
+- Vercel
+
+## Enlaces
+
+Repositorio: https://github.com/Causet009/taller-react-api  
+Despliegue: https://taller-react-api-coral.vercel.app/
