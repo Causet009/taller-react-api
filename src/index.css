@@ -101,9 +101,16 @@ body {
   border-color: #00b5cc;
 }
 
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
 
@@ -138,6 +145,89 @@ body {
   color: #e5e7eb;
 }
 
+.card-actions {
+  margin-top: 14px;
+}
+
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn.favorite {
+  background: #00b5cc;
+  color: #101820;
+}
+
+.btn.favorite:hover {
+  background: #22d3ee;
+}
+
+.btn.favorite.active {
+  background: #facc15;
+  color: #101820;
+}
+
+.side-panel {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  padding: 18px;
+  position: sticky;
+  top: 20px;
+}
+
+.side-panel h2 {
+  margin: 0 0 16px;
+  color: #facc15;
+}
+
+.empty-text {
+  color: #d1d5db;
+  font-size: 14px;
+}
+
+.favorite-item {
+  display: flex;
+  gap: 10px;
+  background: #111827;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.favorite-item img {
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.favorite-item h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: white;
+}
+
+.favorite-item button {
+  background: #7f1d1d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.favorite-item button:hover {
+  background: #991b1b;
+}
+
 .message {
   text-align: center;
   font-size: 20px;
@@ -152,7 +242,15 @@ body {
   text-align: center;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .side-panel {
+    position: static;
+  }
+
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }

@@ -1,4 +1,4 @@
-function Stats({ total }) {
+function Stats({ total, favoritesCount, blockedCount }) {
   return (
     <section className="stats">
       <div>
@@ -7,12 +7,12 @@ function Stats({ total }) {
       </div>
 
       <div>
-        <strong>0</strong>
+        <strong>{favoritesCount}</strong>
         <span>Favoritos</span>
       </div>
 
       <div>
-        <strong>0</strong>
+        <strong>{blockedCount}</strong>
         <span>Bloqueados</span>
       </div>
     </section>

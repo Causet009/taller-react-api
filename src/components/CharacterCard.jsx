@@ -1,4 +1,4 @@
-function CharacterCard({ character }) {
+function CharacterCard({ character, isFavorite, onToggleFavorite }) {
   return (
     <article className="card">
       <img src={character.image} alt={character.name} />
@@ -13,6 +13,15 @@ function CharacterCard({ character }) {
         <p>
           <strong>Estado:</strong> {character.status}
         </p>
+
+        <div className="card-actions">
+          <button
+            className={isFavorite ? "btn favorite active" : "btn favorite"}
+            onClick={() => onToggleFavorite(character)}
+          >
+            {isFavorite ? "Quitar favorito" : "Agregar favorito"}
+          </button>
+        </div>
       </div>
     </article>
   );
