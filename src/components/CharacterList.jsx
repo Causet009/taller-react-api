@@ -1,6 +1,11 @@
 import CharacterCard from "./CharacterCard";
 
-function CharacterList({ characters, favorites, onToggleFavorite }) {
+function CharacterList({
+  characters,
+  favorites,
+  onToggleFavorite,
+  onBlockCharacter,
+}) {
   return (
     <section className="grid">
       {characters.map((character) => (
@@ -9,6 +14,7 @@ function CharacterList({ characters, favorites, onToggleFavorite }) {
           character={character}
           isFavorite={favorites.some((favorite) => favorite.id === character.id)}
           onToggleFavorite={onToggleFavorite}
+          onBlockCharacter={onBlockCharacter}
         />
       ))}
     </section>

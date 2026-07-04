@@ -3,11 +3,13 @@ import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import CharacterList from "./components/CharacterList";
 import FavoritesPanel from "./components/FavoritesPanel";
+import BlockedPanel from "./components/BlockedPanel";
 import Stats from "./components/Stats";
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [blocked, setBlocked] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -57,9 +59,41 @@ function App() {
     setFavorites(updatedFavorites);
   }
 
-  const filteredCharacters = characters.filter((character) =>
-    character.name.toLowerCase().includes(search.toLowerCase())
-  );
+  function handleBlockCharacter(character) {
+    const characterIsBlocked = blocked.some(
+      (blockedCharacter) => blockedCharacter.id === character.id
+    );
+
+    if (!characterIsBlocked) {
+      setBlocked([...blocked, character]);
+    }
+
+    const updatedFavorites = favorites.filter(
+      (favorite) => favorite.id !== character.id
+    );
+
+    setFavorites(updatedFavorites);
+  }
+
+  function handleUnblockCharacter(characterId) {
+    const updatedBlocked = blocked.filter(
+      (blockedCharacter) => blockedCharacter.id !== characterId
+    );
+
+    setBlocked(updatedBlocked);
+  }
+
+  const filteredCharacters = characters.filter((character) => {
+    const matchesSearch = character.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const isBlocked = blocked.some(
+      (blockedCharacter) => blockedCharacter.id === character.id
+    );
+
+    return matchesSearch && !isBlocked;
+  });
 
   return (
     <>
@@ -69,7 +103,7 @@ function App() {
         <Stats
           total={characters.length}
           favoritesCount={favorites.length}
-          blockedCount={0}
+          blockedCount={blocked.length}
         />
 
         <SearchBar search={search} setSearch={setSearch} />
@@ -90,14 +124,22 @@ function App() {
                   characters={filteredCharacters}
                   favorites={favorites}
                   onToggleFavorite={handleToggleFavorite}
+                  onBlockCharacter={handleBlockCharacter}
                 />
               )}
             </section>
 
-            <FavoritesPanel
-              favorites={favorites}
-              onRemoveFavorite={handleRemoveFavorite}
-            />
+            <div className="side-column">
+              <FavoritesPanel
+                favorites={favorites}
+                onRemoveFavorite={handleRemoveFavorite}
+              />
+
+              <BlockedPanel
+                blocked={blocked}
+                onUnblockCharacter={handleUnblockCharacter}
+              />
+            </div>
           </div>
         )}
       </main>

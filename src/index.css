@@ -274,3 +274,18 @@ body {
     font-size: 28px;
   }
 }
+.side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.btn.block {
+  background: #ef4444;
+  color: white;
+  margin-top: 10px;
+}
+
+.btn.block:hover {
+  background: #dc2626;
+}

@@ -1,4 +1,9 @@
-function CharacterCard({ character, isFavorite, onToggleFavorite }) {
+function CharacterCard({
+  character,
+  isFavorite,
+  onToggleFavorite,
+  onBlockCharacter,
+}) {
   return (
     <article className="card">
       <img src={character.image} alt={character.name} />
@@ -20,6 +25,13 @@ function CharacterCard({ character, isFavorite, onToggleFavorite }) {
             onClick={() => onToggleFavorite(character)}
           >
             {isFavorite ? "Quitar favorito" : "Agregar favorito"}
+          </button>
+
+          <button
+            className="btn block"
+            onClick={() => onBlockCharacter(character)}
+          >
+            Bloquear
           </button>
         </div>
       </div>
