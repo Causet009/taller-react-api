@@ -5,11 +5,12 @@ import CharacterList from "./components/CharacterList";
 import FavoritesPanel from "./components/FavoritesPanel";
 import BlockedPanel from "./components/BlockedPanel";
 import Stats from "./components/Stats";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  const [blocked, setBlocked] = useState([]);
+  const [favorites, setFavorites] = useLocalStorage("rick-favorites", []);
+  const [blocked, setBlocked] = useLocalStorage("rick-blocked", []);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
